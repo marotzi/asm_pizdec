@@ -7,38 +7,23 @@ import sys
 
 def python():
     filename = "lambda.py"
-    savefile = "lambda_last.pkl"
     print("////λ IDE")
     lines = []
     while True:
         line = input()
-        if not line:
-            break
-        if line == "load-last":
-            if os.path.exists(savefile):
-                with open(savefile, "rb") as file:
-                    last_code = pickle.load(file)
-                lines = last_code.splitlines()
-                print("Loaded last session.")
-            else:
-                print("No saved session found.")
-            break
+        if not line: break 
         lines.append(line)
-
-    if not lines and os.path.exists(savefile):
-        with open(savefile, "rb") as file:
-            last_code = pickle.load(file)
-        lines = last_code.splitlines()
-
-    if lines:
-        code = "\n".join(lines)
-        with open(filename, "w") as f:
-            f.write(code)
-        with open(savefile, "wb") as file:
-            pickle.dump(code, file)
-        os.system('python3 lambda.py')
-    else:
-        print("No code to run.")
+    with open(filename, "w") as f:
+        f.write("\n".join(lines))
+    while filename == True:
+        with open("lambda.py", "wb") as file:
+            pickle.dump('lambda.py', file)
+    if os.path.exists:
+     os.system('python3 lambda.py')
+    if line == "load-last":
+        pickle.load('lambda.py')
+        filename.read()
+        print(filename)
 def C():
     filename = "lambda.c"
     print("////λ IDE")
