@@ -4,7 +4,7 @@ import os
 import time
 import pickle
 import sys
-
+#colors
 GREEN = "\033[32m"
 RED = "\033[31m"
 YELLOW = "\033[33m"
@@ -24,13 +24,9 @@ def python():
         lines.append(line)
     with open(filename, "w") as f:
         f.write("\n".join(lines))
-    while filename == True:
-        with open("lambda.py", "wb") as file:
-            pickle.dump('lambda.py', file)
     if os.path.exists:
      os.system('python3 lambda.py')
     if line == "load-last":
-        pickle.load('lambda.py')
         filename.read()
         print(filename)
 def C():
@@ -83,10 +79,13 @@ def begin():
 
         if asd == "choose lang":
             choose()
-        if asd == "clear screen":
+        elif asd == "clear screen":
             print("\033[A\033[K", end="") 
+        elif asd == "main":
+            begin()
+            pass
         elif asd == "inst_comp - propertiesetc":
-            print("If no compilers installed choose a compiler you want to install if all is installed type N:")
+            print(f"{UNDERLINE}If no compilers installed choose a compiler you want to install if all is installed type {RED}N:{RESET}")
             print(f"{GREEN}Python,{BLUE} C++, {CYAN}C,{RESET}")
             if asd.lower() == "python":
                  if sys.platform == "darwin":
@@ -118,8 +117,8 @@ def begin():
                 os.system('sudo apt install clang')
                 time.sleep(7)
                 print("is installed!")
-            else:
-                print("error via installing")
+            #else:
+                
         elif asd == "y":
             os.chdir('configs&brainfuckingstuff')
             with open(config, "w") as f:
@@ -141,7 +140,7 @@ def begin():
         elif asd.lower() == "exit":
             break
         #/////
-    print("Exiting IDE.")
+    print(f"{BOLD}Exiting IDE.{RESET}")
     
 begin()
   
